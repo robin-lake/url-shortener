@@ -31,7 +31,7 @@ export default function Shorten() {
       </form>
       {error && <p>Error: {error}</p>}
       {data?.shortUrl && (
-        <p>Short URL: <a href={data.shortUrl}>{data.shortUrl}</a></p>
+        <p>Short URL: <a href={data.shortUrl} target="_blank" rel="noreferrer">{data.shortUrl}</a></p>
       )}
     </div>
   );

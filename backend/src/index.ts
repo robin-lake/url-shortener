@@ -1,10 +1,13 @@
 import express from 'express';
+import cors from 'cors';
 import { shortenUrl, getOriginalUrl } from './urlService';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors());
+// app.use(cors({ origin: 'https://shortener.robinlake.ca' }));
 
 app.post('/shorten', (req, res) => {
   const { url } = req.body;

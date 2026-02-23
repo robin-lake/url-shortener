@@ -5,8 +5,11 @@ function generateShortCode(): string {
 }
 
 export function shortenUrl(originalUrl: string): string {
+  const normalizedUrl = originalUrl.startsWith('http://') || originalUrl.startsWith('https://')
+    ? originalUrl
+    : `https://${originalUrl}`;
   const shortCode = generateShortCode();
-  urlStore.set(shortCode, originalUrl);
+  urlStore.set(shortCode, normalizedUrl);
   return shortCode;
 }
 
