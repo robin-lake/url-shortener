@@ -4,5 +4,9 @@ h1 {
 
 .body {
   display: grid;
+  width: 100vw;
   grid-template-rows: 1fr;
-}
+  justify-content: center;
+  align-items: center;
+  // text-align: center;
+} 
