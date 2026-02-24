@@ -46,6 +46,8 @@ export class BackendStack extends cdk.Stack {
     api.addRoutes({ path: '/shorten', methods: [HttpMethod.POST], integration });
     api.addRoutes({ path: '/{shortCode}', methods: [HttpMethod.GET], integration });
 
+    backendFn.addEnvironment('BASE_URL', api.apiEndpoint);
+
     this.apiUrl = api.apiEndpoint;
 
     new cdk.CfnOutput(this, 'ApiUrl', { value: api.apiEndpoint });
