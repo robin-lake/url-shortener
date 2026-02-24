@@ -67,6 +67,8 @@ export class CdkStack extends cdk.Stack {
     new s3deploy.BucketDeployment(this, 'DeployFrontend', {
       sources: [s3deploy.Source.asset('../frontend/dist')],
       destinationBucket: bucket,
+      distribution,
+      distributionPaths: ['/*'],
     })
 
     new cdk.CfnOutput(this, 'WebsiteURL', {
