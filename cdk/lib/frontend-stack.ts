@@ -9,13 +9,13 @@ import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 import * as cloudfrontOrigins from 'aws-cdk-lib/aws-cloudfront-origins';
 import * as targets from 'aws-cdk-lib/aws-route53-targets';
 
-interface StaticSiteStackProps extends cdk.StackProps {
+interface FrontendStackProps extends cdk.StackProps {
   domainName: string;
   siteSubDomain: string;
 }
 
-export class CdkStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props: StaticSiteStackProps) {
+export class FrontendStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props: FrontendStackProps) {
     super(scope, id, props);
 
     const {domainName, siteSubDomain} = props;

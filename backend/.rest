@@ -1,0 +1,7 @@
+### Shorten a URL (prod – replace with your API URL)
+ POST https://api.shortener.robinlake.ca/shorten
+ Content-Type: application/json
+
+ {
+   "url": "https://example.com"
+ }

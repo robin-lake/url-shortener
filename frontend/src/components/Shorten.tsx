@@ -7,7 +7,8 @@ export default function Shorten() {
   const [inputUrl, setInputUrl] = useState('');
 
   const { data, loading, error, execute } = useFetch<ShortenResponse, { url: string }>(
-    'http://localhost:3000/shorten',
+    // 'http://localhost:3000/shorten',
+    `${import.meta.env.VITE_API_URL}/shorten`,
     { method: 'POST', headers: { 'Content-Type': 'application/json' } }
   );
 

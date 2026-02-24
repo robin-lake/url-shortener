@@ -5,7 +5,15 @@ import { shortenUrl, getOriginalUrl } from './urlService';
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+// CORS in Lambda is handled by API Gateway (corsPreflight). The cors package
+// calls res.on() which fails on Lambda's response proxy, so only use it locally.
+if (!process.env.AWS_LAMBDA_FUNCTION_NAME) {
+  app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+}
+
+app.get('/', (req, res) => {
+   res.status(200).json({message: "this is the api for url shortner. make a request to /shorten"})
+})
 
 app.post('/shorten', (req, res) => {
   const { url } = req.body;
